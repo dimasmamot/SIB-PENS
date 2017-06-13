@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,9 +50,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#footer">Tentang SIB</a>
                     </li>
+
+                    <?php if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {?>
+                    <li class="nav-item">
+                        <a class="nav-link" id="btnDashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="btnLogout">Keluar</a>
+                    </li>
+                    <?php } else {?>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="modal" data-target="#modalLogin">Masuk</a>
                     </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
@@ -279,65 +292,224 @@
 
     <!-- Modal Login-->
     <div class="modal fade modal-ext" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog cascading-model" role="document">
             <!-- Konten -->
             <div class="modal-content">
+                <div class="modal-c-tabs">
+                    <ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#panelLoginInternal" role="tab
+                            "><i class="fa fa-user mr-1"></i> Mahasiswa/BAAK</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#panelLoginEksternal" role="tab
+                            "><i class="fa fa-user mr-1"></i> Pendonor</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <!-- Panel Login Mahasiswa -->
+                        <div class="tab-pane fade in show active" id="panelLoginInternal" role="tabpanel">
+                            <!-- Body -->
+                            <div class="modal-body">
+                                <div class="md-form">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <input type="email" name="email" id="inputEmailMhs" class="form-control validate">
+                                    <label for="inputEmailMhs" data-error="Emailsalah" data-success="">E-mail</label>
+                                </div>
+
+                                <br>
+
+                                <div class="md-form">
+                                    <i class="fa fa-lock prefix"></i>
+                                    <input type="password" name="password" id="inputPasswordMhs" class="form-control">
+                                    <label for="inputPasswordMhs">Password</label>
+                                </div>
+
+                                <div class="text-xs-center">
+                                    <button class="btn btn-primary btn-lg" id="btnMasukMhs">Masuk</button>
+                                </div>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            </div>
+                        </div>
+
+                        <!-- Panel Login Pendonor -->
+                        <div class="tab-pane fade" id="panelLoginEksternal" role="tabpanel">
+                            <!-- Body -->
+                            <div class="modal-body">
+                                <div class="md-form">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <input type="email" name="email" id="inputEmailDon" class="form-control validate">
+                                    <label for="inputEmailDon" data-error="Emailsalah" data-success="">E-mail</label>
+                                </div>
+
+                                <br>
+
+                                <div class="md-form">
+                                    <i class="fa fa-lock prefix"></i>
+                                    <input type="password" name="password" id="inputPasswordDon" class="form-control">
+                                    <label for="inputPasswordDon">Password</label>
+                                </div>
+
+                                <div class="text-xs-center">
+                                    <button class="btn btn-primary btn-lg" id="btnMasukDon">Masuk</button>
+                                </div>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="modal-footer">
+                                <div class="options">
+                                    <p>Ingin Menjadi Pendonor? <a href="daftar.php">Daftar</a></p>
+                                    <p>Lupa <a href="#">Password?</a></p>
+                                </div>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- Header -->
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h3 class="title"><i class="fa fa-user"></i> Masuk</h4>
-                </div>
-
-                <!-- Body -->
-                <div class="modal-body">
-                    <div class="md-form">
-                        <i class="fa fa-envelope prefix"></i>
-                        <input type="email" name="email" id="inputEmail" class="form-control validate">
-                        <label for="inputEmail" data-error="Emailsalah" data-success="">E-mail</label>
-                    </div>
-
-                    <br>
-
-                    <div class="md-form">
-                        <i class="fa fa-lock prefix"></i>
-                        <input type="password" name="password" id="inputPassword" class="form-control">
-                        <label for="inputPassword">Password</label>
-                    </div>
-
-                    <div class="text-xs-center">
-                        <button class="btn btn-primary btn-lg">Masuk</button>
-                    </div>
-                </div>
-
-                <!-- Footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                </div>
             </div>
         </div>
-    </div>
-    <!-- Modal Login-->
+        <!-- Modal Login-->
 
-    <!-- SCRIPTS -->
+        <!-- SCRIPTS -->
 
-    <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/tether.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/tether.min.js"></script>
 
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
 
-    <script>
-        new WOW().init();
-    </script>
+        <script>
+            new WOW().init();
+        </script>
 
-</body>
+        <script>
+            $(document).ready(function(){
+                console.log("script jalan")
+                $('#btnMasukMhs').click(function(){
+                    var emailMhs = $('#inputEmailMhs').val();
+                    var passwordMhs = $('#inputPasswordMhs').val();
+                    var isValid = true;
+                    var url = 'script-login-mahasiswa.php';
 
-</html>
+                    if(emailMhs.length == 0){
+                        toastr["error"]("Email Kosong");
+                        isValid = false;
+                    }
+                    if(passwordMhs.length == 0){
+                        toastr["error"]("Password Kosong");
+                        isValid = false;
+                    }
+
+                    if(!isValid){
+                        toastr["error"]("Email/Password Kosong");
+                    }else{
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            dataType: "json",
+                            data: {'emailMhs': emailMhs, 'passwordMhs': passwordMhs},
+                            success: function(data){
+                                // console.log("yang pasti masuk success");
+                                // console.log(data);
+                                // console.log(data[0].JUMLAH);
+                                // console.log(data[0].ROLE);
+                                if(data.JUMLAH > 0){
+                                    toastr["success"]("Berhasil Masuk Mahasiswa");
+                                    $(location).attr('href',"dashboard.php");              
+                                }else{
+                                    toastr["error"]("Gagal Masuk Mahasiswa");
+                                }                                                      
+                            },
+                            error: function(jqXHR, status, err){
+                                alert("Login gagal");
+                                console.log("jqXHR : "+jqXHR);
+                                console.log("status : "+status);
+                                console.log("err : "+err);
+                            }
+                        });
+                    }
+                });
+                $('#btnMasukDon').click(function(){
+                    var emailDon = $('#inputEmailDon').val();
+                    var passwordDon = $('#inputPasswordDon').val();
+                    var isValid = true;
+                    var url = 'script-login-pendonor.php';
+
+                    if(emailDon.length == 0){
+                        toastr["error"]("Email Kosong");
+                        isValid = false;
+                    }
+                    if(passwordDon.length == 0){
+                        toastr["error"]("Password Kosong");
+                        isValid = false;
+                    }
+
+                    if(!isValid){
+                        toastr["error"]("Email/Password Kosong");
+                    }else{
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            dataType: "json",
+                            data: {'emailDonor': emailDon, 'passwordDonor': passwordDon},
+                            success: function(data){
+                                // console.log("yang pasti masuk success");
+                                // console.log(data);
+                                // console.log(data[0].JUMLAH);
+                                // console.log(data[0].ROLE);
+                                if(data.JUMLAH > 0){
+                                    toastr["success"]("Berhasil Masuk Pendonor");
+                                    $(location).attr('href',"dashboard.php");              
+                                }else{
+                                    toastr["error"]("Gagal Masuk Pendonor");
+                                }                                                      
+                            },
+                            error: function(jqXHR, status, err){
+                                alert("Login gagal");
+                                console.log("jqXHR : "+jqXHR);
+                                console.log("status : "+status);
+                                console.log("err : "+err);
+                            }
+                        });
+                    }
+                });
+
+                $("#btnDashboard").click(function(){
+                    $(location).attr('href',"dashboard.php");
+                });
+
+                $('#btnLogout').click(function(){
+                var url = 'destroy.php';
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function(){
+                        $(location).attr('href',"index.php");
+                    },
+                    error: function(jqXHR, status, err){
+                        alert("Logout gagal");
+                        console.log("jqXHR : "+jqXHR);
+                        console.log("status : "+status);
+                        console.log("err : "+err);
+                    }
+                });
+            });
+            });
+        </script>
+
+    </body>
+
+    </html>
