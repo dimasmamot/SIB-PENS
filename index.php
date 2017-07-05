@@ -404,6 +404,9 @@
                     var isValid = true;
                     var url = 'script-login-mahasiswa.php';
 
+                    console.log(emailMhs);
+                    console.log(passwordMhs);
+
                     if(emailMhs.length == 0){
                         toastr["error"]("Email Kosong");
                         isValid = false;
@@ -423,7 +426,7 @@
                             data: {'emailMhs': emailMhs, 'passwordMhs': passwordMhs},
                             success: function(data){
                                 // console.log("yang pasti masuk success");
-                                // console.log(data);
+                                console.log(data);
                                 // console.log(data[0].JUMLAH);
                                 // console.log(data[0].ROLE);
                                 if(data.JUMLAH > 0){

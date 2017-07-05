@@ -1,25 +1,24 @@
 <?php
 	include 'config.php';
 
-	session_start();
-
 	$conn = mysqli_connect($host, $username, $password, $dbname);
 
 	if(!$conn){
 		die("Koneksi ke database gagal: ".mysqli_connect_error());
 	}
 
-	$sql = "SELECT * FROM tb_beasiswa INNER JOIN tb_detail_beasiswa ON tb_beasiswa.id_detail_beasiswa = tb_detail_beasiswa.id_detail_beasiswa AND tb_beasiswa.id_pendonor = ".$_SESSION['id'];
+	$jmlRow = $_POST["jmlBaris"];
+
+	$sql = "SELECT USER_PENDONOR AS PENDONOR, ID_BEASISWA, NAMA_BEASISWA, TANGGAL_BEASISWA_DIBUKA, DEADLINE_BEASISWA, STATUS_BEASISWA, PENDAFTAR_BEASISWA FROM tb_beasiswa INNER JOIN tb_pendonor ON tb_beasiswa.ID_PENDONOR = tb_pendonor.ID_PENDONOR";
 
 	if(mysqli_query($conn,$sql)){
 		$result = mysqli_query($conn,$sql);
 		$array = mysqli_fetch_all($result,MYSQLI_ASSOC);
 
 		echo json_encode($array);
-	} else {
+	}else{
 		echo "Error: ".$sql."<br>".mysqli_error($conn);
 	}
-	
-	mysqli_close($conn);	
 
+	mysqli_Close($conn);
 ?>

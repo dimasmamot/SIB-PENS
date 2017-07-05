@@ -1,0 +1,40 @@
+ADMIN
+-------------------------------------
+// Table (Sudah)
+- Create (Layout Form Sudah)
+// Read (Sudah)
+- Update (Layout Form Sudah)
+// Delete
+- Statistik (Dashboard Admin)
+- Set Featured Beasiswa
+
+MAHASISWA
+------------------------------------
+- Uplaod Foto
+- Edit Profile Mahasiswa (Dashboard) (Layout Form Sudah)
+// List Beasiswa (Sudah)
+- Apply Beasiswa
+- Request Dokumen
+
+BAAK
+------------------------------------
+- List Request Dokumen (Dashboard) (Notifikasi)
+- Memproses Request Dokumen
+- Lihat List Dokumen
+- Statistik
+
+PENDONOR
+------------------------------------
+- Create Beasiswa (Layout Form sudah ada)
+- Edit Beasiswa (Layout Form Sudah ada)
+- Beasiswa Selesai (List Beasiswa Sudah)
+- Beasiswa Ongoing (List Beasiswa Keseluruhan Sudah)
+- List Mahasiswa yang Apply Beasiswa
+
+HOME INDEX
+------------------------------------
+- Beasiswa Terbaru di card yang ada di beranda
+- Login/Register menggunakan google
+// Login User (Sudah)
+// Login Pendonor (Sudah)
+// Detail Beasiswa (Sudah))

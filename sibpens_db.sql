@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2017 at 01:58 AM
+-- Generation Time: Jun 13, 2017 at 03:38 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -258,7 +258,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`ID_USER`, `ID_DETAIL_USER`, `EMAIL`, `PASSWORD`, `SALT`, `ROLE`, `TANGGAL_PEMBUATAN`, `TERAKHIR_LOGIN`) VALUES
-(1, 1, 'dimasrizkyhp@it.student.pens.ac.id', 'a22bcce765549d4dae35bf18ad6834af', 'awawa', 'mahasiswa', '2017-06-13 11:16:59', '2017-06-13 23:50:44'),
+(1, 1, 'dimasrizkyhp@it.student.pens.ac.id', '5787be38ee03a9ae5360f54d9026465f', 'awawa', 'mahasiswa', '2017-06-13 11:16:59', '2017-06-13 23:50:44'),
 (2, 3, 'admin@mamot.com', '21232f297a57a5a743894a0e4a801fc3', 'salti', 'admin', '2017-06-13 09:14:40', '2017-06-13 10:15:26'),
 (3, 2, 'baak@pens.ac.id', 'f6edb4c31cf9be5ce497d12251a9d29e', 'salti', 'baak', '2017-06-13 07:17:12', '2017-06-13 12:19:48');
 
@@ -341,7 +341,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_beasiswa`
 --
 ALTER TABLE `tb_beasiswa`
-  MODIFY `ID_BEASISWA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID_BEASISWA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tb_detail_beasiswa`
 --
